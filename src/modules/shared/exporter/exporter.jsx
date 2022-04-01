@@ -1,5 +1,6 @@
 import { Excel } from '../excel/excel';
 import mapKeys from 'lodash/mapKeys';
+import ExporterSchema from './exporterSchema'
 
 export default class Exporter {
   schema;
