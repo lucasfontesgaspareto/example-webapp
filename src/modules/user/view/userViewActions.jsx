@@ -1,0 +1,36 @@
+import Errors from '../../shared/error/errors';
+import { getHistory } from '../../store';
+import UserService from '../userService';
+
+const prefix = 'USER_VIEW';
+
+const userViewActions = {
+  FIND_STARTED: `${prefix}_FIND_STARTED`,
+  FIND_SUCCESS: `${prefix}_FIND_SUCCESS`,
+  FIND_ERROR: `${prefix}_FIND_ERROR`,
+
+  doFind: (id) => async (dispatch) => {
+    try {
+      dispatch({
+        type: userViewActions.FIND_STARTED,
+      });
+
+      const user = await UserService.find(id);
+
+      dispatch({
+        type: userViewActions.FIND_SUCCESS,
+        payload: user,
+      });
+    } catch (error) {
+      Errors.handle(error);
+
+      dispatch({
+        type: userViewActions.FIND_ERROR,
+      });
+
+      getHistory().push('/user');
+    }
+  },
+};
+
+export default userViewActions;
