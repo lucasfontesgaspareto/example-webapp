@@ -6,15 +6,13 @@ import { faHistory } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import React from 'react';
 import { useSelector } from 'react-redux';
-import { Link } from 'react-router-dom';
 import { i18n } from '../../../i18n';
 import auditLogSelectors from '../../../modules/auditLog/auditLogSelectors';
 import userSelectors from '../../../modules/user/userSelectors';
 import selectors from '../../../modules/user/view/userViewSelectors';
+import TabsLink from '../../layout/TabsLink';
 
 function UserViewToolbar(props) {
-  const { match } = props;
-
   const user = useSelector(selectors.selectUser);
   const hasPermissionToAuditLogs = useSelector(
     auditLogSelectors.selectPermissionToRead,
@@ -23,12 +21,12 @@ function UserViewToolbar(props) {
     userSelectors.selectPermissionToEdit,
   );
 
-  const id = match.params.id;
+  const id = props.id;
 
   return (
     <div className="mb-4">
       {hasPermissionToEdit && (
-        <Link to={`/user/${id}/edit`}>
+        <TabsLink to="/user/:id/edit" options={{ id }}>
           <button
             className="mb-2 mr-2 text-sm disabled:opacity-50 disabled:cursor-default px-4 py-2 tracking-wide text-white transition-colors duration-200 transform bg-gray-700 rounded-md hover:bg-gray-600 focus:outline-none focus:bg-gray-600"
             type="button"
@@ -39,14 +37,12 @@ function UserViewToolbar(props) {
             />
             {i18n('common.edit')}
           </button>
-        </Link>
+        </TabsLink>
       )}
 
       {hasPermissionToAuditLogs && (
-        <Link
-          to={`/audit-logs?entityId=${encodeURIComponent(
-            id,
-          )}`}
+        <TabsLink
+          to="/audit-logs" options={{ query: `entityId=${encodeURIComponent(id)}` }}
         >
           <button
             className="mb-2 mr-2 text-sm disabled:opacity-50 disabled:cursor-default px-4 py-2 tracking-wide dark:border-gray-800 dark:bg-gray-800 dark:hover:bg-gray-600 dark:text-white text-gray-700 border border-gray-300 transition-colors duration-200 transform bg-white rounded-md hover:bg-gray-100 focus:outline-none focus:bg-gray-100"
@@ -58,14 +54,12 @@ function UserViewToolbar(props) {
             />
             {i18n('auditLog.menu')}
           </button>
-        </Link>
+        </TabsLink>
       )}
 
       {user && user.email && hasPermissionToAuditLogs && (
-        <Link
-          to={`/audit-logs?createdByEmail=${encodeURIComponent(
-            user.email,
-          )}`}
+        <TabsLink
+          to="/audit-logs" options={{ query: `createdByEmail=${encodeURIComponent(user.email)}` }}
         >
           <button
             className="mb-2 mr-2 text-sm disabled:opacity-50 disabled:cursor-default px-4 py-2 tracking-wide dark:border-gray-800 dark:bg-gray-800 dark:hover:bg-gray-600 dark:text-white text-gray-700 border border-gray-300 transition-colors duration-200 transform bg-white rounded-md hover:bg-gray-100 focus:outline-none focus:bg-gray-100"
@@ -77,7 +71,7 @@ function UserViewToolbar(props) {
             />
             {i18n('user.view.activity')}
           </button>
-        </Link>
+        </TabsLink>
       )}
     </div>
   );

@@ -20,6 +20,8 @@ import {
 } from '@fortawesome/free-solid-svg-icons';
 import { Menu } from '@headlessui/react';
 import layoutSelectors from '../../modules/layout/layoutSelectors';
+import routes from '../routes';
+import CustomLoadable from '../shared/CustomLoadable';
 
 function Header(props) {
   const dispatch = useDispatch();
@@ -46,16 +48,50 @@ function Header(props) {
     dispatch(authActions.doSignout());
   };
 
+  const doAddTab = (tab) => {
+    dispatch(layoutActions.doAddTab(tab))
+  }
+
   const doNavigateToProfile = () => {
-    getHistory().push('/profile');
+    const route = routes.privateRoutesTabs.find(route => route.path === '/profile')
+
+    if (route) {
+      doAddTab({
+        path: '/profile',
+        name: route.label,
+        Component: CustomLoadable({
+          loader: route.loader
+        })
+      })
+    }
   };
 
   const doNavigateToPasswordChange = () => {
-    getHistory().push('/password-change');
+    const route = routes.privateRoutesTabs.find(route => route.path === '/password-change')
+
+    if (route) {
+      doAddTab({
+        path: '/password-change',
+        name: route.label,
+        Component: CustomLoadable({
+          loader: route.loader
+        })
+      })
+    }
   };
 
   const doNavigateToTenants = () => {
-    getHistory().push('/tenant');
+    const route = routes.privateRoutesTabs.find(route => route.path === '/tenant')
+
+    if (route) {
+      doAddTab({
+        path: '/tenant',
+        name: route.label,
+        Component: CustomLoadable({
+          loader: route.loader
+        })
+      })
+    }
   };
 
   return (

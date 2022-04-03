@@ -44,7 +44,7 @@ function TenantFormPage() {
   return (
     <>
       <Breadcrumb
-        items={[[i18n('tenant.menu'), '/tenant'], [title]]}
+        items={[[i18n('tenant.menu')], [title]]}
       />
 
       <div className="mt-4 p-6 bg-white dark:bg-gray-800 dark:border-gray-800 text-gray-900 dark:text-gray-200 border-gray-200 border rounded-md">

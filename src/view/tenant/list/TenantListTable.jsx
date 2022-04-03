@@ -6,7 +6,6 @@ import { faCheck } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { Link } from 'react-router-dom';
 import config from '../../../config';
 import { i18n } from '../../../i18n';
 import authActions from '../../../modules/auth/authActions';
@@ -20,6 +19,7 @@ import selectors from '../../../modules/tenant/list/tenantListSelectors';
 import tenantSelectors from '../../../modules/tenant/tenantSelectors';
 import { tenantSubdomain } from '../../../modules/tenant/tenantSubdomain';
 import Plans from '../../../security/plans';
+import TabsLink from '../../layout/TabsLink';
 import ConfirmModal from '../../shared/modals/ConfirmModal';
 import Spinner from '../../shared/Spinner';
 import Pagination from '../../shared/table/Pagination';
@@ -225,15 +225,18 @@ function TenantListTable() {
                           </button>
                         )}
                         {hasPermissionToEdit(row) && (
-                          <Link
+                          <TabsLink
                             className="inline-flex justify-center items-center w-9 h-9 hover:bg-gray-100 dark:hover:bg-gray-800 rounded-full"
-                            to={`/tenant/${row.id}/edit`}
-                            title={i18n('common.edit')}
+                            to="/tenant/:id/edit"
+                            options={{
+                              title: i18n('common.edit'),
+                              id: row.id,
+                            }}
                           >
                             <FontAwesomeIcon
                               icon={faEdit}
                             />
-                          </Link>
+                          </TabsLink>
                         )}
                         {hasPermissionToDestroy(row) && (
                           <button

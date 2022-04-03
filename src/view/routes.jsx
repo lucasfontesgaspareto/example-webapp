@@ -1,11 +1,23 @@
 import Permissions from '../security/permissions';
 import config from '../config';
+import { i18n } from '../i18n';
 
 const permissions = Permissions.values;
 
 const privateRoutes = [
   {
     path: '/',
+    loader: () =>
+      import('../view/layout/Tabs'),
+    permissionRequired: null,
+    exact: true,
+  },
+
+].filter(Boolean);
+
+const privateRoutesTabs = [
+  {
+    path: '/dashboard',
     loader: () =>
       import('../view/dashboard/DashboardPage'),
     permissionRequired: null,
@@ -17,6 +29,7 @@ const privateRoutes = [
     loader: () => import('../view/auth/ProfileFormPage'),
     permissionRequired: null,
     exact: true,
+    label: i18n('auth.profile.title'),
   },
 
   {
@@ -25,6 +38,7 @@ const privateRoutes = [
       import('../view/auth/PasswordChangeFormPage'),
     permissionRequired: null,
     exact: true,
+    label: i18n('auth.passwordChange.title'),
   },
 
   {
@@ -68,6 +82,7 @@ const privateRoutes = [
     loader: () => import('../view/user/new/UserNewPage'),
     permissionRequired: permissions.userCreate,
     exact: true,
+    label: i18n('user.new.title'),
   },
 
   {
@@ -76,24 +91,28 @@ const privateRoutes = [
       import('../view/user/importer/UserImporterPage'),
     permissionRequired: permissions.userImport,
     exact: true,
+    label: i18n('user.importer.title'),
   },
   {
     path: '/user/:id/edit',
     loader: () => import('../view/user/edit/UserEditPage'),
     permissionRequired: permissions.userEdit,
     exact: true,
+    label: i18n('user.edit.title'),
   },
   {
     path: '/user/:id',
     loader: () => import('../view/user/view/UserViewPage'),
     permissionRequired: permissions.userRead,
     exact: true,
+    label: i18n('user.view.title'),
   },
 
   {
     path: '/audit-logs',
     loader: () => import('../view/auditLog/AuditLogPage'),
     permissionRequired: permissions.auditLogRead,
+    label: i18n('auditLog.menu'),
   },
 
   {
@@ -176,6 +195,7 @@ const simpleRoutes = [
 
 export default {
   privateRoutes,
+  privateRoutesTabs,
   publicRoutes,
   emptyTenantRoutes,
   emptyPermissionsRoutes,

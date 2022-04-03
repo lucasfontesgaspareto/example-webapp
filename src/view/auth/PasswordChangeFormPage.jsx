@@ -1,15 +1,22 @@
 import React from 'react';
 import { i18n } from '../../i18n';
-import { getHistory } from '../../modules/store';
 import PasswordChangeForm from '../auth/PasswordChangeForm';
 import Breadcrumb from '../shared/Breadcrumb';
+import { useDispatch } from 'react-redux';
+import layoutActions from '../../modules/layout/layoutActions';
 
 function PasswordChangeFormPage(props) {
+  const dispatch = useDispatch();
+
+  const doRemoveTab = (tab) => {
+    dispatch(layoutActions.doRemoveTab(tab))
+  }
+
   return (
     <>
       <Breadcrumb
         items={[
-          [i18n('dashboard.menu'), '/'],
+          [i18n('dashboard.menu')],
           [i18n('auth.passwordChange.title')],
         ]}
       />
@@ -20,7 +27,7 @@ function PasswordChangeFormPage(props) {
         </h1>
 
         <PasswordChangeForm
-          onCancel={() => getHistory().push('/')}
+          onCancel={() => doRemoveTab('/password-change')}
         />
       </div>
     </>

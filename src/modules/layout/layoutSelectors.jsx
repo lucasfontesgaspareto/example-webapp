@@ -22,12 +22,24 @@ const selectLanguage = createSelector(
   (layout) => layout.language,
 );
 
+const selectTabs = createSelector(
+  [selectRaw],
+  (layout) => layout.tabs,
+);
+
+const selectActiveTab = createSelector(
+  [selectRaw],
+  (layout) => layout.activeTab,
+);
+
 const layoutSelectors = {
   selectRaw,
   selectMenuVisible,
   selectLoading,
   selectLanguage,
   selectDarkMode,
+  selectTabs,
+  selectActiveTab,
 };
 
 export default layoutSelectors;

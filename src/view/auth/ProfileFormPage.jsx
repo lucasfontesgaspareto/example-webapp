@@ -1,15 +1,22 @@
 import React from 'react';
 import { i18n } from '../../i18n';
-import { getHistory } from '../../modules/store';
 import ProfileForm from '../auth/ProfileForm';
 import Breadcrumb from '../shared/Breadcrumb';
+import { useDispatch } from 'react-redux';
+import layoutActions from '../../modules/layout/layoutActions';
 
 function ProfileFormPage() {
+  const dispatch = useDispatch();
+
+  const doRemoveTab = (tab) => {
+    dispatch(layoutActions.doRemoveTab(tab))
+  }
+
   return (
     <>
       <Breadcrumb
         items={[
-          [i18n('dashboard.menu'), '/'],
+          [i18n('dashboard.menu')],
           [i18n('auth.profile.title')],
         ]}
       />
@@ -20,7 +27,7 @@ function ProfileFormPage() {
         </h1>
 
         <ProfileForm
-          onCancel={() => getHistory().push('/')}
+          onCancel={() => doRemoveTab('/profile')}
         />
       </div>
     </>

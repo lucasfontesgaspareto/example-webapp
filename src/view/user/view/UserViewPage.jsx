@@ -1,6 +1,5 @@
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { useRouteMatch } from 'react-router-dom';
 import { i18n } from '../../../i18n';
 import actions from '../../../modules/user/view/userViewActions';
 import selectors from '../../../modules/user/view/userViewSelectors';
@@ -10,21 +9,20 @@ import UserViewToolbar from './UserViewToolbar';
 
 function UserViewPage(props) {
   const dispatch = useDispatch();
-  const match = useRouteMatch();
 
   const loading = useSelector(selectors.selectLoading);
   const user = useSelector(selectors.selectUser);
 
   useEffect(() => {
-    dispatch(actions.doFind(match.params.id));
-  }, [dispatch, match.params.id]);
+    dispatch(actions.doFind(props.id));
+  }, [dispatch, props.id]);
 
   return (
     <>
       <Breadcrumb
         items={[
-          [i18n('dashboard.menu'), '/'],
-          [i18n('user.menu'), '/user'],
+          [i18n('dashboard.menu')],
+          [i18n('user.menu')],
           [i18n('user.view.title')],
         ]}
       />
@@ -34,7 +32,7 @@ function UserViewPage(props) {
           {i18n('user.view.title')}
         </h1>
 
-        <UserViewToolbar match={match} />
+        <UserViewToolbar id={props.id} />
 
         <UserView loading={loading} user={user} />
       </div>

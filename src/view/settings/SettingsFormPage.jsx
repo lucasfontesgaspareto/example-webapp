@@ -27,7 +27,7 @@ const SettingsFormPage = (props) => {
     <>
       <Breadcrumb
         items={[
-          [i18n('dashboard.menu'), '/'],
+          [i18n('dashboard.menu')],
           [i18n('settings.title')],
         ]}
       />

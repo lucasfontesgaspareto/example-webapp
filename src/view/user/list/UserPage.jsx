@@ -10,7 +10,7 @@ function UserPage() {
     <>
       <Breadcrumb
         items={[
-          [i18n('dashboard.menu'), '/'],
+          [i18n('dashboard.menu')],
           [i18n('user.menu')],
         ]}
       />

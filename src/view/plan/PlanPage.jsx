@@ -10,7 +10,7 @@ function PlanPage(props) {
     <>
       <Breadcrumb
         items={[
-          [i18n('dashboard.menu'), '/'],
+          [i18n('dashboard.menu')],
           [i18n('plan.menu')],
         ]}
       />

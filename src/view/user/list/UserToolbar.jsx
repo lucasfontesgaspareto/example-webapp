@@ -8,13 +8,13 @@ import {
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { Link } from 'react-router-dom';
 import ReactTooltip from 'react-tooltip';
 import { i18n } from '../../../i18n';
 import auditLogSelectors from '../../../modules/auditLog/auditLogSelectors';
 import actions from '../../../modules/user/list/userListActions';
 import selectors from '../../../modules/user/list/userListSelectors';
 import userSelectors from '../../../modules/user/userSelectors';
+import TabsLink from '../../layout/TabsLink';
 
 function UserToolbar(props) {
   const dispatch = useDispatch();
@@ -123,7 +123,7 @@ function UserToolbar(props) {
   return (
     <div className="mb-4">
       {hasPermissionToCreate && (
-        <Link to="/user/new">
+        <TabsLink to="/user/new">
           <button
             className="mb-2 mr-2 text-sm disabled:opacity-50 disabled:cursor-default px-4 py-2 tracking-wide text-white transition-colors duration-200 transform bg-gray-700 rounded-md hover:bg-gray-600 focus:outline-none focus:bg-gray-600"
             type="button"
@@ -134,11 +134,11 @@ function UserToolbar(props) {
             />
             {i18n('common.new')}
           </button>
-        </Link>
+        </TabsLink>
       )}
 
       {hasPermissionToImport && (
-        <Link to="/user/importer">
+        <TabsLink to="/user/importer">
           <button
             className="mb-2 mr-2 text-sm disabled:opacity-50 disabled:cursor-default px-4 py-2 tracking-wide text-white transition-colors duration-200 transform bg-gray-700 rounded-md hover:bg-gray-600 focus:outline-none focus:bg-gray-600"
             type="button"
@@ -149,13 +149,13 @@ function UserToolbar(props) {
             />
             {i18n('common.import')}
           </button>
-        </Link>
+        </TabsLink>
       )}
 
       {renderDestroyButton()}
 
       {hasPermissionToAuditLogs && (
-        <Link to="/audit-logs?entityNames=user">
+        <TabsLink to="/audit-logs" options={{ query: 'entityNames=user' }}>
           <button
             className="mb-2 mr-2 text-sm disabled:opacity-50 disabled:cursor-default px-4 py-2 tracking-wide dark:border-gray-800 dark:bg-gray-800 dark:hover:bg-gray-600 dark:text-white text-gray-700 border border-gray-300 transition-colors duration-200 transform bg-white rounded-md hover:bg-gray-100 focus:outline-none focus:bg-gray-100"
             type="button"
@@ -166,7 +166,7 @@ function UserToolbar(props) {
             />
             {i18n('auditLog.menu')}
           </button>
-        </Link>
+        </TabsLink>
       )}
 
       {renderExportButton()}

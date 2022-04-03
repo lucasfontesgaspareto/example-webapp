@@ -6,7 +6,6 @@ import { faSearch } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { Link } from 'react-router-dom';
 import { i18n } from '../../../i18n';
 import actions from '../../../modules/user/list/userListActions';
 import selectors from '../../../modules/user/list/userListSelectors';
@@ -18,6 +17,7 @@ import Spinner from '../../shared/Spinner';
 import Pagination from '../../shared/table/Pagination';
 import TableColumnHeader from '../../shared/table/TableColumnHeader';
 import UserStatusView from '../view/UserStatusView';
+import TabsLink from '../../layout/TabsLink';
 
 function UserTable() {
   const dispatch = useDispatch();
@@ -192,21 +192,29 @@ function UserTable() {
                     align="right"
                     className="w-56 whitespace-nowrap border-b px-5 py-5 border-gray-200 dark:border-gray-800"
                   >
-                    <Link
+                    <TabsLink
                       className="inline-flex justify-center items-center w-9 h-9 hover:bg-gray-100 dark:hover:bg-gray-800 rounded-full"
-                      to={`/user/${row.id}`}
+                      to={`/user/:id`}
                       title={i18n('common.view')}
+                      options={{
+                        id: row.id,
+                        title: i18n('user.view.title')
+                      }}
                     >
                       <FontAwesomeIcon icon={faSearch} />
-                    </Link>
+                    </TabsLink>
                     {hasPermissionToEdit && (
-                      <Link
+                      <TabsLink
                         className="inline-flex justify-center items-center w-9 h-9 hover:bg-gray-100 dark:hover:bg-gray-800 rounded-full"
-                        to={`/user/${row.id}/edit`}
+                        to={`/user/:id/edit`}
                         title={i18n('common.edit')}
+                        options={{
+                          id: row.id,
+                          title: i18n('user.edit.title')
+                        }}
                       >
                         <FontAwesomeIcon icon={faEdit} />
-                      </Link>
+                      </TabsLink>
                     )}
                     {hasPermissionToDestroy && (
                       <button

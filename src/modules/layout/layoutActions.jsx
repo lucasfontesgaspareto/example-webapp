@@ -9,6 +9,10 @@ const layoutActions = {
 
   DARK_MODE_CHANGE: `${prefix}_DARK_MODE`,
 
+  ADD_TAB: `${prefix}_ADD_TAB`,
+  REMOVE_TAB: `${prefix}_REMOVE_TAB`,
+  ACTIVE_TAB: `${prefix}_ACTIVE_TAB`,
+
   doChangeLanguage: (language) => {
     setLanguageCode(language);
 
@@ -41,6 +45,27 @@ const layoutActions = {
   doHideMenu: () => {
     return {
       type: layoutActions.MENU_HIDE,
+    };
+  },
+
+  doAddTab: (tab) => {
+    return {
+      type: layoutActions.ADD_TAB,
+      payload: tab,
+    };
+  },
+
+  doRemoveTab: (tab) => {
+    return {
+      type: layoutActions.REMOVE_TAB,
+      payload: tab,
+    };
+  },
+
+  doActiveTab: (tab) => {
+    return {
+      type: layoutActions.ACTIVE_TAB,
+      payload: tab,
     };
   },
 };

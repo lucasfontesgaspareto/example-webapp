@@ -13,6 +13,7 @@ import layoutActions from '../../modules/layout/layoutActions';
 import actions from '../../modules/layout/layoutActions';
 import layoutSelectors from '../../modules/layout/layoutSelectors';
 import menus from '../menus';
+import TabsLink from './TabsLink';
 
 function Menu(props) {
   const dispatch = useDispatch();
@@ -125,7 +126,7 @@ function Menu(props) {
               match(menu.permissionRequired),
             )
             .map((menu, index) => (
-              <Link
+              <TabsLink
                 className={`${index !== 0 ? 'mt-4' : ''} ${
                   selectedKeys().includes(menu.path)
                     ? 'flex items-center px-4 py-2 rounded-md bg-gray-700 text-gray-200'
@@ -134,6 +135,9 @@ function Menu(props) {
                 onClick={doToggleMenuIfSmall}
                 key={menu.path}
                 to={menu.path}
+                options={{
+                  title: menu.label
+                }}
               >
                 <FontAwesomeIcon
                   className="w-5 h-5"
@@ -142,7 +146,7 @@ function Menu(props) {
                 <span className="mx-4 font-medium truncate">
                   {menu.label}
                 </span>
-              </Link>
+              </TabsLink>
             ))}
 
           {menus

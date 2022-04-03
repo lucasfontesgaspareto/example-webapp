@@ -81,7 +81,7 @@ function AuditLogFilter(props) {
       ...rawFilter,
     };
 
-    const queryFilters = queryString.parse(location.search);
+    const queryFilters = queryString.parse(props.query || location.search);
 
     initialValues.entityNames =
       queryFilters.entityNames || initialValues.entityNames;

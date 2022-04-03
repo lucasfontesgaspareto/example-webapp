@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { useRouteMatch } from 'react-router-dom';
 import { i18n } from '../../../i18n';
+import layoutActions from '../../../modules/layout/layoutActions';
 import { getHistory } from '../../../modules/store';
 import actions from '../../../modules/user/form/userFormActions';
 import selectors from '../../../modules/user/form/userFormSelectors';
@@ -11,6 +11,7 @@ import UserEditForm from '../../user/edit/UserEditForm';
 
 function UserEditPage(props) {
   const dispatch = useDispatch();
+
   const [dispatched, setDispatched] = useState(false);
 
   const initLoading = useSelector(
@@ -23,19 +24,21 @@ function UserEditPage(props) {
 
   const user = useSelector(selectors.selectUser);
 
-  const match = useRouteMatch();
-
   useEffect(() => {
-    dispatch(actions.doInit(match.params.id));
+    dispatch(actions.doInit(props.id));
     setDispatched(true);
-  }, [dispatch, match.params.id]);
+  }, [dispatch, props.id]);
+
+  const doRemoveTab = (tab) => {
+    dispatch(layoutActions.doRemoveTab(tab))
+  }
 
   return (
     <>
       <Breadcrumb
         items={[
-          [i18n('dashboard.menu'), '/'],
-          [i18n('user.menu'), '/user'],
+          [i18n('dashboard.menu')],
+          [i18n('user.menu')],
           [i18n('user.edit.title')],
         ]}
       />
@@ -51,7 +54,7 @@ function UserEditPage(props) {
           <UserEditForm
             user={user}
             saveLoading={saveLoading}
-            onCancel={() => getHistory().push('/user')}
+            onCancel={() => doRemoveTab('/user/:id/edit')}
           />
         )}
       </div>

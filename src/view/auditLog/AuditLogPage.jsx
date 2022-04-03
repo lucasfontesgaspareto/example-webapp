@@ -10,7 +10,7 @@ function AuditLogPage(props) {
     <>
       <Breadcrumb
         items={[
-          [i18n('dashboard.menu'), '/'],
+          [i18n('dashboard.menu')],
           [i18n('auditLog.menu')],
         ]}
       />
@@ -20,7 +20,7 @@ function AuditLogPage(props) {
           {i18n('auditLog.title')}
         </h1>
         <AuditLogToolbar />
-        <AuditLogFilter />
+        <AuditLogFilter query={props.query} />
         <AuditLogTable />
       </div>
     </>

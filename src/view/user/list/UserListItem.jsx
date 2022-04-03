@@ -1,8 +1,8 @@
 import PropTypes from 'prop-types';
 import React from 'react';
-import { Link } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import selectors from '../../modules/user/userSelectors';
+import TabsLink from '../../layout/TabsLink';
 
 function UserListItem(props) {
   const hasPermissionToRead = useSelector(
@@ -39,12 +39,15 @@ function UserListItem(props) {
     if (hasPermissionToRead) {
       return (
         <div key={record.id}>
-          <Link
+          <TabsLink
             className="text-blue-500 dark:text-blue-400 focus:text-blue-400 hover:text-blue-400"
-            to={`/user/${record.id}`}
+            to="/user/:id"
+            options={{
+              id: record.id
+            }}
           >
             {label(record)}
-          </Link>
+          </TabsLink>
         </div>
       );
     }
