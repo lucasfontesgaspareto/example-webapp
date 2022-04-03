@@ -5,6 +5,8 @@ const securityPermissionEnumerators = {
     'user',
     'auditLog',
     'settings',
+    'securityRole',
+    'securityPermission',
   ],
   action: [
     'Create',

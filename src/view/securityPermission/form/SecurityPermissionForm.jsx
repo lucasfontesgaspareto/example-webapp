@@ -10,18 +10,13 @@ import { FormProvider, useForm } from 'react-hook-form';
 import { i18n } from '../../../i18n';
 import yupFormSchemas from '../../../modules/shared/yup/yupFormSchemas';
 import InputFormItem from '../../shared/form/items/InputFormItem';
+import TextViewItem from '../../shared/view/TextViewItem';
 import SelectFormItem from '../../shared/form/items/SelectFormItem';
 import securityPermissionEnumerators from '../../../modules/securityPermission/securityPermissionEnumerators';
 import SecurityRoleAutocompleteFormItem from '../../securityRole/autocomplete/SecurityRoleAutocompleteFormItem';
 import * as yup from 'yup';
 
 const schema = yup.object().shape({
-  key: yupFormSchemas.string(
-    i18n('entities.securityPermission.fields.key'),
-    {
-      "required": true
-    },
-  ),
   entity: yupFormSchemas.enumerator(
     i18n('entities.securityPermission.fields.entity'),
     {
@@ -34,6 +29,12 @@ const schema = yup.object().shape({
     {
       "required": true,
       "options": securityPermissionEnumerators.action
+    },
+  ),
+  key: yupFormSchemas.string(
+    i18n('entities.securityPermission.fields.key'),
+    {
+      "required": true
     },
   ),
   allowedRoles: yupFormSchemas.relationToMany(
@@ -56,6 +57,8 @@ function SecurityPermissionForm(props) {
     };
   });
 
+  const [keyValue, setKeyValue] = useState('')
+
   const form = useForm({
     resolver: yupResolver(schema),
     mode: 'all',
@@ -72,17 +75,16 @@ function SecurityPermissionForm(props) {
     });
   };
 
+  const onChangeEntityOrAction = () => {
+    const { entity, action } = form.getValues()
+    const keyValue = `${entity||''}${action||''}`
+    form.setValue('key', keyValue)
+    setKeyValue(keyValue)
+  }
+
   return (
     <FormProvider {...form}>
       <form onSubmit={form.handleSubmit(onSubmit)}>
-        <div className="w-full sm:w-md md:w-md lg:w-md">
-          <InputFormItem
-            name="key"
-            label={i18n('entities.securityPermission.fields.key')}
-            required={true}
-          autoFocus
-          />
-        </div>
         <div className="w-full sm:w-md md:w-md lg:w-md mt-4">
           <SelectFormItem
             name="entity"
@@ -96,6 +98,8 @@ function SecurityPermissionForm(props) {
               }),
             )}
             required={true}
+            autoFocus
+            onChange={onChangeEntityOrAction}
           />
         </div>
         <div className="w-full sm:w-md md:w-md lg:w-md mt-4">
@@ -111,6 +115,22 @@ function SecurityPermissionForm(props) {
               }),
             )}
             required={true}
+            onChange={onChangeEntityOrAction}
+          />
+        </div>
+        <div className="w-full sm:w-md md:w-md lg:w-md">
+          <div
+            className="hidden"
+          >
+            <InputFormItem
+              name="key"
+              label={i18n('entities.securityPermission.fields.key')}
+              required={true}
+            />
+          </div>
+          <TextViewItem
+            label={i18n('entities.securityPermission.fields.key')}
+            value={keyValue}
           />
         </div>
         <div className="w-full sm:w-md md:w-md lg:w-md mt-4">
