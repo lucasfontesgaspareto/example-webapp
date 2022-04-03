@@ -6,6 +6,8 @@ import plan from './plan/planReducers';
 import user from './user/userReducers';
 import auditLog from './auditLog/auditLogReducers';
 import settings from './settings/settingsReducers';
+import securityRole from './securityRole/securityRoleReducers';
+import securityPermission from './securityPermission/securityPermissionReducers';
 import { combineReducers } from 'redux';
 
 export default (history) =>
@@ -18,4 +20,6 @@ export default (history) =>
     user,
     auditLog,
     settings,
+    securityRole,
+    securityPermission,
   });

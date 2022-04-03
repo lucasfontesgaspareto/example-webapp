@@ -34,44 +34,111 @@ const ptBR = {
   },
 
   entities: {
-    customer: {
-        name: 'Customer',
-        label: 'Customers',
-        menu: 'Customers',
-        exporterFileName: 'Customer_exportados',
+    securityRole: {
+        name: 'Perfil de acesso',
+        label: 'Perfis de acesso',
+        menu: 'Perfis de acesso',
+        exporterFileName: 'Perfil de acesso_exportados',
         list: {
-          menu: 'Customers',
-          title: 'Customers',
+          menu: 'Perfis de acesso',
+          title: 'Perfis de acesso',
         },
         create: {
-          success: 'Customer salvo com sucesso',
+          success: 'Perfil de acesso salvo com sucesso',
         },
         update: {
-          success: 'Customer salvo com sucesso',
+          success: 'Perfil de acesso salvo com sucesso',
         },
         destroy: {
-          success: 'Customer deletado com sucesso',
+          success: 'Perfil de acesso deletado com sucesso',
         },
         destroyAll: {
-          success: 'Customer(s) deletado com sucesso',
+          success: 'Perfil de acesso(s) deletado com sucesso',
         },
         edit: {
-          title: 'Editar Customer',
+          title: 'Editar Perfil de acesso',
         },
         fields: {
           id: 'Id',
-          'name': 'Name',
-          'birthdateRange': 'Birthdate',
-          'birthdate': 'Birthdate',
-          'gender': 'Gender',
+          'name': 'Nome',
+          'active': 'Ativo',
+          'permissions': 'Permissões',
           createdAt: 'Criado em',
           updatedAt: 'Atualizado em',
           createdAtRange: 'Criado em',
         },
         enumerators: {
-          'gender': {
-            'male': 'Male',
-            'female': 'Female',
+
+        },
+        placeholders: {
+
+        },
+        hints: {
+
+        },
+        new: {
+          title: 'Novo Perfil de acesso',
+        },
+        view: {
+          title: 'Visualizar Perfil de acesso',
+        },
+        importer: {
+          title: 'Importar Perfis de acesso',
+          fileName: 'securityRole_template_importacao',
+          hint:
+            'Arquivos/Imagens devem ser as URLs dos arquivos, separados por espaço. Relacionamentos devem ser os IDs separados por espaço.',
+        },
+      },
+
+    securityPermission: {
+        name: 'Permissão',
+        label: 'Permissões',
+        menu: 'Permissões',
+        exporterFileName: 'Permissão_exportados',
+        list: {
+          menu: 'Permissões',
+          title: 'Permissões',
+        },
+        create: {
+          success: 'Permissão salvo com sucesso',
+        },
+        update: {
+          success: 'Permissão salvo com sucesso',
+        },
+        destroy: {
+          success: 'Permissão deletado com sucesso',
+        },
+        destroyAll: {
+          success: 'Permissão(s) deletado com sucesso',
+        },
+        edit: {
+          title: 'Editar Permissão',
+        },
+        fields: {
+          id: 'Id',
+          'key': 'ID',
+          'entity': 'Entidade',
+          'action': 'Ação',
+          'allowedRoles': 'Perfis permitidos',
+          createdAt: 'Criado em',
+          updatedAt: 'Atualizado em',
+          createdAtRange: 'Criado em',
+        },
+        enumerators: {
+          'entity': {
+            'tenant': 'Tenant',
+            'plan': 'Plan',
+            'user': 'User',
+            'auditLog': 'AuditLog',
+            'settings': 'Settings',
+          },
+          'action': {
+            'Create': 'Create',
+            'Read': 'Read',
+            'Edit': 'Edit',
+            'Destroy': 'Destroy',
+            'Import': 'Import',
+            'Autocomplete': 'Autocomplete',
           },
         },
         placeholders: {
@@ -81,130 +148,14 @@ const ptBR = {
 
         },
         new: {
-          title: 'Novo Customer',
+          title: 'Novo Permissão',
         },
         view: {
-          title: 'Visualizar Customer',
+          title: 'Visualizar Permissão',
         },
         importer: {
-          title: 'Importar Customers',
-          fileName: 'customer_template_importacao',
-          hint:
-            'Arquivos/Imagens devem ser as URLs dos arquivos, separados por espaço. Relacionamentos devem ser os IDs separados por espaço.',
-        },
-      },
-
-    product: {
-        name: 'Product',
-        label: 'Products',
-        menu: 'Products',
-        exporterFileName: 'Product_exportados',
-        list: {
-          menu: 'Products',
-          title: 'Products',
-        },
-        create: {
-          success: 'Product salvo com sucesso',
-        },
-        update: {
-          success: 'Product salvo com sucesso',
-        },
-        destroy: {
-          success: 'Product deletado com sucesso',
-        },
-        destroyAll: {
-          success: 'Product(s) deletado com sucesso',
-        },
-        edit: {
-          title: 'Editar Product',
-        },
-        fields: {
-          id: 'Id',
-          'name': 'Name',
-          'description': 'Description',
-          'unitPriceRange': 'Unit Price',
-          'unitPrice': 'Unit Price',
-          'photos': 'Photos',
-          createdAt: 'Criado em',
-          updatedAt: 'Atualizado em',
-          createdAtRange: 'Criado em',
-        },
-        enumerators: {
-
-        },
-        placeholders: {
-
-        },
-        hints: {
-
-        },
-        new: {
-          title: 'Novo Product',
-        },
-        view: {
-          title: 'Visualizar Product',
-        },
-        importer: {
-          title: 'Importar Products',
-          fileName: 'product_template_importacao',
-          hint:
-            'Arquivos/Imagens devem ser as URLs dos arquivos, separados por espaço. Relacionamentos devem ser os IDs separados por espaço.',
-        },
-      },
-
-    order: {
-        name: 'Order',
-        label: 'Orders',
-        menu: 'Orders',
-        exporterFileName: 'Order_exportados',
-        list: {
-          menu: 'Orders',
-          title: 'Orders',
-        },
-        create: {
-          success: 'Order salvo com sucesso',
-        },
-        update: {
-          success: 'Order salvo com sucesso',
-        },
-        destroy: {
-          success: 'Order deletado com sucesso',
-        },
-        destroyAll: {
-          success: 'Order(s) deletado com sucesso',
-        },
-        edit: {
-          title: 'Editar Order',
-        },
-        fields: {
-          id: 'Id',
-          'customer': 'Customer',
-          'products': 'Products',
-          'employee': 'Employee',
-          'delivered': 'Delivered',
-          'attachments': 'Attachments',
-          createdAt: 'Criado em',
-          updatedAt: 'Atualizado em',
-          createdAtRange: 'Criado em',
-        },
-        enumerators: {
-
-        },
-        placeholders: {
-
-        },
-        hints: {
-
-        },
-        new: {
-          title: 'Novo Order',
-        },
-        view: {
-          title: 'Visualizar Order',
-        },
-        importer: {
-          title: 'Importar Orders',
-          fileName: 'order_template_importacao',
+          title: 'Importar Permissões',
+          fileName: 'securityPermission_template_importacao',
           hint:
             'Arquivos/Imagens devem ser as URLs dos arquivos, separados por espaço. Relacionamentos devem ser os IDs separados por espaço.',
         },

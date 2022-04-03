@@ -34,44 +34,111 @@ const en = {
   },
 
   entities: {
-    customer: {
-        name: 'customer',
-        label: 'Customers',
-        menu: 'Customers',
-        exporterFileName: 'customer_export',
+    securityRole: {
+        name: 'securityRole',
+        label: 'Perfis de acesso',
+        menu: 'Perfis de acesso',
+        exporterFileName: 'securityRole_export',
         list: {
-          menu: 'Customers',
-          title: 'Customers',
+          menu: 'Perfis de acesso',
+          title: 'Perfis de acesso',
         },
         create: {
-          success: 'Customer successfully saved',
+          success: 'Perfil de acesso successfully saved',
         },
         update: {
-          success: 'Customer successfully saved',
+          success: 'Perfil de acesso successfully saved',
         },
         destroy: {
-          success: 'Customer successfully deleted',
+          success: 'Perfil de acesso successfully deleted',
         },
         destroyAll: {
-          success: 'Customer(s) successfully deleted',
+          success: 'Perfil de acesso(s) successfully deleted',
         },
         edit: {
-          title: 'Edit Customer',
+          title: 'Edit Perfil de acesso',
         },
         fields: {
           id: 'Id',
-          'name': 'Name',
-          'birthdateRange': 'Birthdate',
-          'birthdate': 'Birthdate',
-          'gender': 'Gender',
+          'name': 'Nome',
+          'active': 'Ativo',
+          'permissions': 'Permissões',
           createdAt: 'Created at',
           updatedAt: 'Updated at',
           createdAtRange: 'Created at',
         },
         enumerators: {
-          'gender': {
-            'male': 'Male',
-            'female': 'Female',
+
+        },
+        placeholders: {
+
+        },
+        hints: {
+
+        },
+        new: {
+          title: 'New Perfil de acesso',
+        },
+        view: {
+          title: 'View Perfil de acesso',
+        },
+        importer: {
+          title: 'Import Perfis de acesso',
+          fileName: 'securityRole_import_template',
+          hint:
+            'Files/Images columns must be the URLs of the files separated by space.',
+        },
+      },
+
+    securityPermission: {
+        name: 'securityPermission',
+        label: 'Permissões',
+        menu: 'Permissões',
+        exporterFileName: 'securityPermission_export',
+        list: {
+          menu: 'Permissões',
+          title: 'Permissões',
+        },
+        create: {
+          success: 'Permissão successfully saved',
+        },
+        update: {
+          success: 'Permissão successfully saved',
+        },
+        destroy: {
+          success: 'Permissão successfully deleted',
+        },
+        destroyAll: {
+          success: 'Permissão(s) successfully deleted',
+        },
+        edit: {
+          title: 'Edit Permissão',
+        },
+        fields: {
+          id: 'Id',
+          'key': 'ID',
+          'entity': 'Entidade',
+          'action': 'Ação',
+          'allowedRoles': 'Perfis permitidos',
+          createdAt: 'Created at',
+          updatedAt: 'Updated at',
+          createdAtRange: 'Created at',
+        },
+        enumerators: {
+          'entity': {
+            'tenant': 'Tenant',
+            'plan': 'Plan',
+            'user': 'User',
+            'auditLog': 'AuditLog',
+            'settings': 'Settings',
+          },
+          'action': {
+            'Create': 'Create',
+            'Read': 'Read',
+            'Edit': 'Edit',
+            'Destroy': 'Destroy',
+            'Import': 'Import',
+            'Autocomplete': 'Autocomplete',
           },
         },
         placeholders: {
@@ -81,130 +148,14 @@ const en = {
 
         },
         new: {
-          title: 'New Customer',
+          title: 'New Permissão',
         },
         view: {
-          title: 'View Customer',
+          title: 'View Permissão',
         },
         importer: {
-          title: 'Import Customers',
-          fileName: 'customer_import_template',
-          hint:
-            'Files/Images columns must be the URLs of the files separated by space.',
-        },
-      },
-
-    product: {
-        name: 'product',
-        label: 'Products',
-        menu: 'Products',
-        exporterFileName: 'product_export',
-        list: {
-          menu: 'Products',
-          title: 'Products',
-        },
-        create: {
-          success: 'Product successfully saved',
-        },
-        update: {
-          success: 'Product successfully saved',
-        },
-        destroy: {
-          success: 'Product successfully deleted',
-        },
-        destroyAll: {
-          success: 'Product(s) successfully deleted',
-        },
-        edit: {
-          title: 'Edit Product',
-        },
-        fields: {
-          id: 'Id',
-          'name': 'Name',
-          'description': 'Description',
-          'unitPriceRange': 'Unit Price',
-          'unitPrice': 'Unit Price',
-          'photos': 'Photos',
-          createdAt: 'Created at',
-          updatedAt: 'Updated at',
-          createdAtRange: 'Created at',
-        },
-        enumerators: {
-
-        },
-        placeholders: {
-
-        },
-        hints: {
-
-        },
-        new: {
-          title: 'New Product',
-        },
-        view: {
-          title: 'View Product',
-        },
-        importer: {
-          title: 'Import Products',
-          fileName: 'product_import_template',
-          hint:
-            'Files/Images columns must be the URLs of the files separated by space.',
-        },
-      },
-
-    order: {
-        name: 'order',
-        label: 'Orders',
-        menu: 'Orders',
-        exporterFileName: 'order_export',
-        list: {
-          menu: 'Orders',
-          title: 'Orders',
-        },
-        create: {
-          success: 'Order successfully saved',
-        },
-        update: {
-          success: 'Order successfully saved',
-        },
-        destroy: {
-          success: 'Order successfully deleted',
-        },
-        destroyAll: {
-          success: 'Order(s) successfully deleted',
-        },
-        edit: {
-          title: 'Edit Order',
-        },
-        fields: {
-          id: 'Id',
-          'customer': 'Customer',
-          'products': 'Products',
-          'employee': 'Employee',
-          'delivered': 'Delivered',
-          'attachments': 'Attachments',
-          createdAt: 'Created at',
-          updatedAt: 'Updated at',
-          createdAtRange: 'Created at',
-        },
-        enumerators: {
-
-        },
-        placeholders: {
-
-        },
-        hints: {
-
-        },
-        new: {
-          title: 'New Order',
-        },
-        view: {
-          title: 'View Order',
-        },
-        importer: {
-          title: 'Import Orders',
-          fileName: 'order_import_template',
+          title: 'Import Permissões',
+          fileName: 'securityPermission_import_template',
           hint:
             'Files/Images columns must be the URLs of the files separated by space.',
         },

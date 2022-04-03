@@ -1,0 +1,83 @@
+import listActions from '../list/securityPermissionListActions';
+import SecurityPermissionService from '../securityPermissionService';
+import Errors from '../../shared/error/errors';
+import { i18n } from '../../../i18n';
+import { getHistory } from '../../store';
+import Message from '../../../view/shared/message';
+
+const prefix = 'SECURITYPERMISSION_DESTROY';
+
+const securityPermissionDestroyActions = {
+  DESTROY_STARTED: `${prefix}_DESTROY_STARTED`,
+  DESTROY_SUCCESS: `${prefix}_DESTROY_SUCCESS`,
+  DESTROY_ERROR: `${prefix}_DESTROY_ERROR`,
+
+  DESTROY_ALL_STARTED: `${prefix}_DESTROY_ALL_STARTED`,
+  DESTROY_ALL_SUCCESS: `${prefix}_DESTROY_ALL_SUCCESS`,
+  DESTROY_ALL_ERROR: `${prefix}_DESTROY_ALL_ERROR`,
+
+  doDestroy: (id) => async (dispatch) => {
+    try {
+      dispatch({
+        type: securityPermissionDestroyActions.DESTROY_STARTED,
+      });
+
+      await SecurityPermissionService.destroyAll([id]);
+
+      dispatch({
+        type: securityPermissionDestroyActions.DESTROY_SUCCESS,
+      });
+
+      Message.success(
+        i18n('entities.securityPermission.destroy.success'),
+      );
+
+      dispatch(listActions.doFetchCurrentFilter());
+
+      getHistory().push('/security-permission');
+    } catch (error) {
+      Errors.handle(error);
+
+      dispatch(listActions.doFetchCurrentFilter());
+
+      dispatch({
+        type: securityPermissionDestroyActions.DESTROY_ERROR,
+      });
+    }
+  },
+
+  doDestroyAll: (ids) => async (dispatch) => {
+    try {
+      dispatch({
+        type: securityPermissionDestroyActions.DESTROY_ALL_STARTED,
+      });
+
+      await SecurityPermissionService.destroyAll(ids);
+
+      dispatch({
+        type: securityPermissionDestroyActions.DESTROY_ALL_SUCCESS,
+      });
+
+      if (listActions) {
+        dispatch(listActions.doClearAllSelected());
+        dispatch(listActions.doFetchCurrentFilter());
+      }
+
+      Message.success(
+        i18n('entities.securityPermission.destroyAll.success'),
+      );
+
+      getHistory().push('/security-permission');
+    } catch (error) {
+      Errors.handle(error);
+
+      dispatch(listActions.doFetchCurrentFilter());
+
+      dispatch({
+        type: securityPermissionDestroyActions.DESTROY_ALL_ERROR,
+      });
+    }
+  },
+};
+
+export default securityPermissionDestroyActions;

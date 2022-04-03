@@ -121,122 +121,83 @@ class Permissions {
           storage.settingsLogos,
         ],
       },
-      customerImport: {
-        id: 'customerImport',
+      
+      securityRoleImport: {
+        id: 'securityRoleImport',
         allowedRoles: [roles.admin],
         allowedPlans: [plans.free, plans.growth, plans.enterprise],
       },
-      customerCreate: {
-        id: 'customerCreate',
-        allowedRoles: [roles.admin],
-        allowedPlans: [plans.free, plans.growth, plans.enterprise],
-        allowedStorage: [
-
-        ],
-      },
-      customerEdit: {
-        id: 'customerEdit',
+      securityRoleCreate: {
+        id: 'securityRoleCreate',
         allowedRoles: [roles.admin],
         allowedPlans: [plans.free, plans.growth, plans.enterprise],
         allowedStorage: [
 
         ],
       },
-      customerDestroy: {
-        id: 'customerDestroy',
+      securityRoleEdit: {
+        id: 'securityRoleEdit',
         allowedRoles: [roles.admin],
         allowedPlans: [plans.free, plans.growth, plans.enterprise],
         allowedStorage: [
 
         ],
       },
-      customerRead: {
-        id: 'customerRead',
+      securityRoleDestroy: {
+        id: 'securityRoleDestroy',
+        allowedRoles: [roles.admin],
+        allowedPlans: [plans.free, plans.growth, plans.enterprise],
+        allowedStorage: [
+
+        ],
+      },
+      securityRoleRead: {
+        id: 'securityRoleRead',
         allowedRoles: [roles.admin, roles.custom],
         allowedPlans: [plans.free, plans.growth, plans.enterprise],
       },
-      customerAutocomplete: {
-        id: 'customerAutocomplete',
+      securityRoleAutocomplete: {
+        id: 'securityRoleAutocomplete',
         allowedRoles: [roles.admin, roles.custom],
         allowedPlans: [plans.free, plans.growth, plans.enterprise],
       },
 
-      productImport: {
-        id: 'productImport',
+      securityPermissionImport: {
+        id: 'securityPermissionImport',
         allowedRoles: [roles.admin],
         allowedPlans: [plans.free, plans.growth, plans.enterprise],
       },
-      productCreate: {
-        id: 'productCreate',
-        allowedRoles: [roles.admin],
-        allowedPlans: [plans.free, plans.growth, plans.enterprise],
-        allowedStorage: [
-          storage.productPhotos,
-        ],
-      },
-      productEdit: {
-        id: 'productEdit',
+      securityPermissionCreate: {
+        id: 'securityPermissionCreate',
         allowedRoles: [roles.admin],
         allowedPlans: [plans.free, plans.growth, plans.enterprise],
         allowedStorage: [
-          storage.productPhotos,
-        ],
-      },
-      productDestroy: {
-        id: 'productDestroy',
-        allowedRoles: [roles.admin],
-        allowedPlans: [plans.free, plans.growth, plans.enterprise],
-        allowedStorage: [
-          storage.productPhotos,
-        ],
-      },
-      productRead: {
-        id: 'productRead',
-        allowedRoles: [roles.admin, roles.custom],
-        allowedPlans: [plans.free, plans.growth, plans.enterprise],
-      },
-      productAutocomplete: {
-        id: 'productAutocomplete',
-        allowedRoles: [roles.admin, roles.custom],
-        allowedPlans: [plans.free, plans.growth, plans.enterprise],
-      },
 
-      orderImport: {
-        id: 'orderImport',
-        allowedRoles: [roles.admin],
-        allowedPlans: [plans.free, plans.growth, plans.enterprise],
+        ],
       },
-      orderCreate: {
-        id: 'orderCreate',
+      securityPermissionEdit: {
+        id: 'securityPermissionEdit',
         allowedRoles: [roles.admin],
         allowedPlans: [plans.free, plans.growth, plans.enterprise],
         allowedStorage: [
-          storage.orderAttachments,
+
         ],
       },
-      orderEdit: {
-        id: 'orderEdit',
+      securityPermissionDestroy: {
+        id: 'securityPermissionDestroy',
         allowedRoles: [roles.admin],
         allowedPlans: [plans.free, plans.growth, plans.enterprise],
         allowedStorage: [
-          storage.orderAttachments,
+
         ],
       },
-      orderDestroy: {
-        id: 'orderDestroy',
-        allowedRoles: [roles.admin],
-        allowedPlans: [plans.free, plans.growth, plans.enterprise],
-        allowedStorage: [
-          storage.orderAttachments,
-        ],
-      },
-      orderRead: {
-        id: 'orderRead',
+      securityPermissionRead: {
+        id: 'securityPermissionRead',
         allowedRoles: [roles.admin, roles.custom],
         allowedPlans: [plans.free, plans.growth, plans.enterprise],
       },
-      orderAutocomplete: {
-        id: 'orderAutocomplete',
+      securityPermissionAutocomplete: {
+        id: 'securityPermissionAutocomplete',
         allowedRoles: [roles.admin, roles.custom],
         allowedPlans: [plans.free, plans.growth, plans.enterprise],
       },

@@ -10,19 +10,6 @@
 export default class Storage {
   static get values() {
     return {
-
-
-      productPhotos: {
-        id: 'productPhotos',
-        folder: 'tenant/:tenantId/product/photos',
-        maxSizeInBytes: 1000000,
-      },
-
-      orderAttachments: {
-        id: 'orderAttachments',
-        folder: 'tenant/:tenantId/order/attachments',
-        maxSizeInBytes: 1000000,
-      },
       settingsLogos: {
         id: 'settingsLogos',
         folder: 'tenant/:tenantId/settings/logos',

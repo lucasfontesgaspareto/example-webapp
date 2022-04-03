@@ -103,6 +103,81 @@ const privateRoutes = [
     permissionRequired: permissions.settingsEdit,
   },
 
+  {
+    path: '/security-role',
+    loader: () =>
+      import('../view/securityRole/list/SecurityRoleListPage'),
+    permissionRequired: permissions.securityRoleRead,
+    exact: true,
+  },
+  {
+    path: '/security-role/new',
+    loader: () =>
+      import('../view/securityRole/form/SecurityRoleFormPage'),
+    permissionRequired: permissions.securityRoleCreate,
+    exact: true,
+  },
+  {
+    path: '/security-role/importer',
+    loader: () =>
+      import(
+        '../view/securityRole/importer/SecurityRoleImporterPage'
+      ),
+    permissionRequired: permissions.securityRoleImport,
+    exact: true,
+  },
+  {
+    path: '/security-role/:id/edit',
+    loader: () =>
+      import('../view/securityRole/form/SecurityRoleFormPage'),
+    permissionRequired: permissions.securityRoleEdit,
+    exact: true,
+  },
+  {
+    path: '/security-role/:id',
+    loader: () =>
+      import('../view/securityRole/view/SecurityRoleViewPage'),
+    permissionRequired: permissions.securityRoleRead,
+    exact: true,
+  },
+
+  {
+    path: '/security-permission',
+    loader: () =>
+      import('../view/securityPermission/list/SecurityPermissionListPage'),
+    permissionRequired: permissions.securityPermissionRead,
+    exact: true,
+  },
+  {
+    path: '/security-permission/new',
+    loader: () =>
+      import('../view/securityPermission/form/SecurityPermissionFormPage'),
+    permissionRequired: permissions.securityPermissionCreate,
+    exact: true,
+  },
+  {
+    path: '/security-permission/importer',
+    loader: () =>
+      import(
+        '../view/securityPermission/importer/SecurityPermissionImporterPage'
+      ),
+    permissionRequired: permissions.securityPermissionImport,
+    exact: true,
+  },
+  {
+    path: '/security-permission/:id/edit',
+    loader: () =>
+      import('../view/securityPermission/form/SecurityPermissionFormPage'),
+    permissionRequired: permissions.securityPermissionEdit,
+    exact: true,
+  },
+  {
+    path: '/security-permission/:id',
+    loader: () =>
+      import('../view/securityPermission/view/SecurityPermissionViewPage'),
+    permissionRequired: permissions.securityPermissionRead,
+    exact: true,
+  },
 ].filter(Boolean);
 
 const publicRoutes = [
