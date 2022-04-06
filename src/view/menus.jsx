@@ -8,6 +8,7 @@ import {
   faThLarge,
   faUserPlus,
   faChevronRight,
+  faShieldAlt,
 } from '@fortawesome/free-solid-svg-icons';
 
 const permissions = Permissions.values;
@@ -55,19 +56,27 @@ export default [
         permissionRequired: permissions.settingsEdit,
       },
     ].filter(Boolean)
-  }
-
-  {
-    path: '/security-role',
-    permissionRequired: permissions.securityRoleRead,
-    icon: faChevronRight,
-    label: i18n('entities.securityRole.menu'),
   },
 
   {
-    path: '/security-permission',
-    permissionRequired: permissions.securityPermissionRead,
-    icon: faChevronRight,
-    label: i18n('entities.securityPermission.menu'),
-  },  
+    group: true,
+    exact: true,
+    icon: faShieldAlt,
+    label: i18n('entities.securityRole.menu'),
+    children: [
+      {
+        path: '/security-role',
+        permissionRequired: permissions.securityRoleRead,
+        icon: faChevronRight,
+        label: i18n('entities.securityRole.menu'),
+      },
+
+      {
+        path: '/security-permission',
+        permissionRequired: permissions.securityPermissionRead,
+        icon: faChevronRight,
+        label: i18n('entities.securityPermission.menu'),
+      },
+    ]
+  }
 ].filter(Boolean);
