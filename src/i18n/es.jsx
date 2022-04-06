@@ -42,25 +42,25 @@ const es = {
           title: 'Perfis de acesso',
         },
         create: {
-          success: 'Perfil de acesso guardado con éxito',
+          success: 'Perfil de Acceso guardado con éxito',
         },
         update: {
-          success: 'Perfil de acesso guardado con éxito',
+          success: 'Perfil de Acceso guardado con éxito',
         },
         destroy: {
-          success: 'Perfil de acesso eliminado con éxito',
+          success: 'Perfil de Acceso eliminado con éxito',
         },
         destroyAll: {
-          success: 'Perfil de acesso(s) eliminado con éxito',
+          success: 'Perfil de Acceso(s) eliminado con éxito',
         },
         edit: {
-          title: 'Editar Perfil de acesso',
+          title: 'Editar Perfil de Acceso',
         },
         fields: {
           id: 'Id',
-          'name': 'Nome',
-          'active': 'Ativo',
-          'permissions': 'Permissões',
+          'name': 'Nombre',
+          'active': 'Activo',
+          'permissions': 'Permisos',
           createdAt: 'Creado el',
           updatedAt: 'Actualizado el',
           createdAtRange: 'Creado el',
@@ -75,10 +75,10 @@ const es = {
 
         },
         new: {
-          title: 'Nuevo Perfil de acesso',
+          title: 'Nuevo Perfil de Acceso',
         },
         view: {
-          title: 'Ver Perfil de acesso',
+          title: 'Ver Perfil de Acceso',
         },
         importer: {
           title: 'Importar Perfis de acesso',
@@ -90,53 +90,55 @@ const es = {
 
     securityPermission: {
         name: 'securityPermission',
-        label: 'Permissões',
-        menu: 'Permissões',
+        label: 'Permisos',
+        menu: 'Permisos',
         exporterFileName: 'exportacion_securityPermission',
         list: {
-          menu: 'Permissões',
-          title: 'Permissões',
+          menu: 'Permisos',
+          title: 'Permisos',
         },
         create: {
-          success: 'Permissão guardado con éxito',
+          success: 'Permiso guardado con éxito',
         },
         update: {
-          success: 'Permissão guardado con éxito',
+          success: 'Permiso guardado con éxito',
         },
         destroy: {
-          success: 'Permissão eliminado con éxito',
+          success: 'Permiso eliminado con éxito',
         },
         destroyAll: {
-          success: 'Permissão(s) eliminado con éxito',
+          success: 'Permiso(s) eliminado con éxito',
         },
         edit: {
-          title: 'Editar Permissão',
+          title: 'Editar Permiso',
         },
         fields: {
           id: 'Id',
           'key': 'ID',
-          'entity': 'Entidade',
-          'action': 'Ação',
-          'allowedRoles': 'Perfis permitidos',
+          'entity': 'Entidad',
+          'action': 'Comportamiento',
+          'allowedRoles': 'Roles',
           createdAt: 'Creado el',
           updatedAt: 'Actualizado el',
           createdAtRange: 'Creado el',
         },
         enumerators: {
           'entity': {
-            'tenant': 'Tenant',
+            'tenant': 'Espacio de trabajo',
             'plan': 'Plan',
-            'user': 'User',
-            'auditLog': 'AuditLog',
-            'settings': 'Settings',
+            'user': 'Usuario',
+            'auditLog': 'Registro de auditoría',
+            'settings': 'Configuraciones',
+            'securityRole': 'Rol de seguridad',
+            'securityPermission': 'Permiso de seguridad',
           },
           'action': {
-            'Create': 'Create',
-            'Read': 'Read',
-            'Edit': 'Edit',
-            'Destroy': 'Destroy',
-            'Import': 'Import',
-            'Autocomplete': 'Autocomplete',
+            'Create': 'Crear',
+            'Read': 'Leer',
+            'Edit': 'Editar',
+            'Destroy': 'Destruir',
+            'Import': 'Importar',
+            'Autocomplete': 'Autocompletar',
           },
         },
         placeholders: {
@@ -146,13 +148,13 @@ const es = {
 
         },
         new: {
-          title: 'Nuevo Permissão',
+          title: 'Nuevo Permiso',
         },
         view: {
-          title: 'Ver Permissão',
+          title: 'Ver Permiso',
         },
         importer: {
-          title: 'Importar Permissões',
+          title: 'Importar Permisos',
           fileName: 'securityPermission_import_template',
           hint:
             'Las columnas Archivos/Imágenes deben ser las URL de los archivos separados por espacio.',

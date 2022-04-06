@@ -26,11 +26,6 @@ function SecurityRoleView(props) {
             : i18n('common.no')
         }
       />
-
-      <SecurityPermissionViewItem
-        label={i18n('entities.securityRole.fields.permissions')}
-        value={record.permissions}
-      />
     </div>
   );
 }

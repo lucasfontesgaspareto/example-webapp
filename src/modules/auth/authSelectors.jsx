@@ -59,7 +59,7 @@ const selectRoles = createSelector(
       return [];
     }
 
-    return tenantUser.roles;
+    return tenantUser.roles.map(role => role.name);
   },
 );
 

@@ -134,6 +134,13 @@ const privateRoutes = [
     exact: true,
   },
   {
+    path: '/security-role/:id/permissions',
+    loader: () =>
+      import('../view/securityRole/form/SecurityRolePermissionsPage'),
+    permissionRequired: permissions.securityRoleEdit,
+    exact: true,
+  },
+  {
     path: '/security-role/:id',
     loader: () =>
       import('../view/securityRole/view/SecurityRoleViewPage'),

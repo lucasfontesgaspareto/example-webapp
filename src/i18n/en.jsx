@@ -35,131 +35,133 @@ const en = {
 
   entities: {
     securityRole: {
-        name: 'securityRole',
-        label: 'Perfis de acesso',
-        menu: 'Perfis de acesso',
-        exporterFileName: 'securityRole_export',
-        list: {
-          menu: 'Perfis de acesso',
-          title: 'Perfis de acesso',
-        },
-        create: {
-          success: 'Perfil de acesso successfully saved',
-        },
-        update: {
-          success: 'Perfil de acesso successfully saved',
-        },
-        destroy: {
-          success: 'Perfil de acesso successfully deleted',
-        },
-        destroyAll: {
-          success: 'Perfil de acesso(s) successfully deleted',
-        },
-        edit: {
-          title: 'Edit Perfil de acesso',
-        },
-        fields: {
-          id: 'Id',
-          'name': 'Nome',
-          'active': 'Ativo',
-          'permissions': 'Permissões',
-          createdAt: 'Created at',
-          updatedAt: 'Updated at',
-          createdAtRange: 'Created at',
-        },
-        enumerators: {
-
-        },
-        placeholders: {
-
-        },
-        hints: {
-
-        },
-        new: {
-          title: 'New Perfil de acesso',
-        },
-        view: {
-          title: 'View Perfil de acesso',
-        },
-        importer: {
-          title: 'Import Perfis de acesso',
-          fileName: 'securityRole_import_template',
-          hint:
-            'Files/Images columns must be the URLs of the files separated by space.',
-        },
+      name: 'securityRole',
+      label: 'Roles',
+      menu: 'Roles',
+      exporterFileName: 'securityRole_export',
+      list: {
+        menu: 'Roles',
+        title: 'Roles',
       },
+      create: {
+        success: 'Role successfully saved',
+      },
+      update: {
+        success: 'Role successfully saved',
+      },
+      destroy: {
+        success: 'Role successfully deleted',
+      },
+      destroyAll: {
+        success: 'Role(s) successfully deleted',
+      },
+      edit: {
+        title: 'Edit Role',
+      },
+      fields: {
+        id: 'Id',
+        'name': 'Name',
+        'active': 'Active',
+        'permissions': 'Permissions',
+        createdAt: 'Created at',
+        updatedAt: 'Updated at',
+        createdAtRange: 'Created at',
+      },
+      enumerators: {
+
+      },
+      placeholders: {
+
+      },
+      hints: {
+
+      },
+      new: {
+        title: 'New Role',
+      },
+      view: {
+        title: 'View Role',
+      },
+      importer: {
+        title: 'Import Roles',
+        fileName: 'securityRole_import_template',
+        hint:
+          'Files/Images columns must be the URLs of the files separated by space.',
+      },
+    },
 
     securityPermission: {
-        name: 'securityPermission',
-        label: 'Permissões',
-        menu: 'Permissões',
-        exporterFileName: 'securityPermission_export',
-        list: {
-          menu: 'Permissões',
-          title: 'Permissões',
+      name: 'securityPermission',
+      label: 'Permissions',
+      menu: 'Permissions',
+      exporterFileName: 'securityPermission_export',
+      list: {
+        menu: 'Permissions',
+        title: 'Permissions',
+      },
+      create: {
+        success: 'Permission successfully saved',
+      },
+      update: {
+        success: 'Permission successfully saved',
+      },
+      destroy: {
+        success: 'Permission successfully deleted',
+      },
+      destroyAll: {
+        success: 'Permission(s) successfully deleted',
+      },
+      edit: {
+        title: 'Edit Permission',
+      },
+      fields: {
+        id: 'Id',
+        'key': 'ID',
+        'entity': 'Entity',
+        'action': 'Action',
+        'allowedRoles': 'Roles',
+        createdAt: 'Created at',
+        updatedAt: 'Updated at',
+        createdAtRange: 'Created at',
+      },
+      enumerators: {
+        'entity': {
+          'tenant': 'Workspace',
+          'plan': 'Plan',
+          'user': 'User',
+          'auditLog': 'Audit Log',
+          'settings': 'Settings',
+          'securityRole': 'Security Role',
+          'securityPermission': 'Security Permission',
         },
-        create: {
-          success: 'Permissão successfully saved',
-        },
-        update: {
-          success: 'Permissão successfully saved',
-        },
-        destroy: {
-          success: 'Permissão successfully deleted',
-        },
-        destroyAll: {
-          success: 'Permissão(s) successfully deleted',
-        },
-        edit: {
-          title: 'Edit Permissão',
-        },
-        fields: {
-          id: 'Id',
-          'key': 'ID',
-          'entity': 'Entidade',
-          'action': 'Ação',
-          'allowedRoles': 'Perfis permitidos',
-          createdAt: 'Created at',
-          updatedAt: 'Updated at',
-          createdAtRange: 'Created at',
-        },
-        enumerators: {
-          'entity': {
-            'tenant': 'Tenant',
-            'plan': 'Plan',
-            'user': 'User',
-            'auditLog': 'AuditLog',
-            'settings': 'Settings',
-          },
-          'action': {
-            'Create': 'Create',
-            'Read': 'Read',
-            'Edit': 'Edit',
-            'Destroy': 'Destroy',
-            'Import': 'Import',
-            'Autocomplete': 'Autocomplete',
-          },
-        },
-        placeholders: {
-
-        },
-        hints: {
-
-        },
-        new: {
-          title: 'New Permissão',
-        },
-        view: {
-          title: 'View Permissão',
-        },
-        importer: {
-          title: 'Import Permissões',
-          fileName: 'securityPermission_import_template',
-          hint:
-            'Files/Images columns must be the URLs of the files separated by space.',
+        'action': {
+          'Create': 'Create',
+          'Read': 'Read',
+          'Edit': 'Edit',
+          'Destroy': 'Destroy',
+          'Import': 'Import',
+          'Autocomplete': 'Autocomplete',
         },
       },
+      placeholders: {
+
+      },
+      hints: {
+
+      },
+      new: {
+        title: 'New Permission',
+      },
+      view: {
+        title: 'View Permission',
+      },
+      importer: {
+        title: 'Import Permissions',
+        fileName: 'securityPermission_import_template',
+        hint:
+          'Files/Images columns must be the URLs of the files separated by space.',
+      },
+    },
   },
 
   auth: {

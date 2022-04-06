@@ -176,9 +176,9 @@ function UserTable() {
                     {row.fullName}
                   </td>
                   <td className="whitespace-nowrap px-5 py-5 border-b border-gray-200 dark:border-gray-800 text-sm">
-                    {row.roles.map((roleId) => (
-                      <div key={roleId}>
-                        <span>{Roles.labelOf(roleId)}</span>
+                    {row.roles.map((role) => (
+                      <div key={role.id}>
+                        <span>{role.name}</span>
                       </div>
                     ))}
                   </td>

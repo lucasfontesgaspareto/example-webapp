@@ -29,7 +29,7 @@ export default class PermissionChecker {
       return [];
     }
 
-    return tenant.roles;
+    return tenant.roles.map(role => role.name);
   }
 
   match(permission) {
@@ -70,8 +70,8 @@ export default class PermissionChecker {
         return false;
       }
 
-      return arg.some((role) =>
-        this.currentUserRolesIds.includes(role),
+      return arg.some((role) => 
+        this.currentUserRolesIds.includes(role)
       );
     }
 

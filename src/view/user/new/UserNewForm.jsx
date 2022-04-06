@@ -14,10 +14,11 @@ import InputFormItem from '../../shared/form/items/InputFormItem';
 import SelectFormItem from '../../shared/form/items/SelectFormItem';
 import TagsFormItem from '../../shared/form/items/TagsFormItem';
 import * as yup from 'yup';
+import SecurityRoleAutocompleteFormItem from '../../securityRole/autocomplete/SecurityRoleAutocompleteFormItem';
 
 const singleSchema = yup.object().shape({
   email: yupFormSchemas.email(i18n('user.fields.email')),
-  roles: yupFormSchemas.stringArray(
+  roles: yupFormSchemas.relationToMany(
     i18n('user.fields.roles'),
     { required: true, min: 1 },
   ),
@@ -40,7 +41,7 @@ const multipleSchema = yup.object().shape({
     )
     .required()
     .min(1),
-  roles: yupFormSchemas.stringArray(
+  roles: yupFormSchemas.relationToMany(
     i18n('user.fields.roles'),
     { required: true, min: 1 },
   ),
@@ -103,14 +104,11 @@ function UserNewForm(props) {
           )}
         </div>
         <div className="w-full sm:w-md md:w-md lg:w-md mt-4">
-          <SelectFormItem
+          <SecurityRoleAutocompleteFormItem  
             name="roles"
             label={i18n('user.fields.roles')}
-            required={true}
-            options={userEnumerators.roles.map((value) => ({
-              value,
-              label: i18n(`roles.${value}.label`),
-            }))}
+            required={false}
+            showCreate={!props.modal}
             mode="multiple"
           />
         </div>

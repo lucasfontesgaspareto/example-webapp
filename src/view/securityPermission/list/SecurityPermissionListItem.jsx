@@ -32,7 +32,7 @@ function SecurityPermissionListItem(props) {
             className="text-blue-500 dark:text-blue-400 focus:text-blue-400 hover:text-blue-400"
             to={`/security-permission/${record.id}`}
           >
-            {record.id}
+            {record.key}
           </Link>
         </div>
       );

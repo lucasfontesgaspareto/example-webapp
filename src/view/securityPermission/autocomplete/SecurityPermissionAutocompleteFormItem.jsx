@@ -51,10 +51,6 @@ function SecurityPermissionAutocompleteFormItem(props) {
       const value = originalValue.id;
       let label = originalValue.label;
 
-      if (originalValue.id) {
-        label = originalValue.id;
-      }
-
       return {
         key: value,
         value,

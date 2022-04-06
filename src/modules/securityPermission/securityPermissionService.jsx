@@ -76,6 +76,16 @@ export default class SecurityPermissionService {
     return response.data;
   }
 
+  static async data() {
+    const tenantId = AuthCurrentTenant.get();
+
+    const response = await authAxios.get(
+      `/tenant/${tenantId}/security-permission/data`,
+    );
+
+    return response.data;
+  }
+
   static async list(filter, orderBy, limit, offset) {
     const params = {
       filter,

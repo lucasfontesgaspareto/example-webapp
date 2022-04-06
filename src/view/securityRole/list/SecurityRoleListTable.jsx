@@ -2,7 +2,7 @@ import {
   faEdit,
   faTrashAlt,
 } from '@fortawesome/free-regular-svg-icons';
-import { faSearch } from '@fortawesome/free-solid-svg-icons';
+import { faSearch, faTasks } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
@@ -17,7 +17,6 @@ import TableColumnHeader from '../../shared/table/TableColumnHeader';
 import ConfirmModal from '../../shared/modals/ConfirmModal';
 import Spinner from '../../shared/Spinner';
 import Pagination from '../../shared/table/Pagination';
-import SecurityPermissionListItem from '../../securityPermission/list/SecurityPermissionListItem';
 
 function SecurityRoleListTable(props) {
   const [
@@ -127,11 +126,6 @@ function SecurityRoleListTable(props) {
                     'entities.securityRole.fields.active',
                   )}
                 />
-                <TableColumnHeader
-                  label={i18n(
-                    'entities.securityRole.fields.permissions',
-                  )}
-                />
               <TableColumnHeader />
             </tr>
           </thead>
@@ -176,9 +170,6 @@ function SecurityRoleListTable(props) {
                       ? i18n('common.yes')
                       : i18n('common.no')}
                   </td>
-                  <td className="whitespace-nowrap px-5 py-5 border-b border-gray-200 dark:border-gray-800 text-sm">
-                    <SecurityPermissionListItem value={row.permissions} />
-                  </td>
                   <td
                     className="w-56 whitespace-nowrap border-b px-5 py-5 border-gray-200 dark:border-gray-800"
                     align="right"
@@ -197,6 +188,15 @@ function SecurityRoleListTable(props) {
                         title={i18n('common.edit')}
                       >
                         <FontAwesomeIcon icon={faEdit} />
+                      </Link>
+                    )}
+                    {hasPermissionToEdit && (
+                      <Link
+                        className="inline-flex justify-center items-center w-9 h-9 hover:bg-gray-100 dark:hover:bg-gray-800 rounded-full"
+                        to={`/security-role/${row.id}/permissions`}
+                        title={i18n('entities.securityPermission.menu')}
+                      >
+                        <FontAwesomeIcon icon={faTasks} />
                       </Link>
                     )}
                     {hasPermissionToDestroy && (

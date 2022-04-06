@@ -11,7 +11,6 @@ import { i18n } from '../../../i18n';
 import yupFormSchemas from '../../../modules/shared/yup/yupFormSchemas';
 import InputFormItem from '../../shared/form/items/InputFormItem';
 import SwitchFormItem from '../../shared/form/items/SwitchFormItem';
-import SecurityPermissionAutocompleteFormItem from '../../securityPermission/autocomplete/SecurityPermissionAutocompleteFormItem';
 import * as yup from 'yup';
 
 const schema = yup.object().shape({
@@ -26,10 +25,6 @@ const schema = yup.object().shape({
     i18n('entities.securityRole.fields.active'),
     {},
   ),
-  permissions: yupFormSchemas.relationToMany(
-    i18n('entities.securityRole.fields.permissions'),
-    {},
-  ),
 });
 
 function SecurityRoleForm(props) {
@@ -41,7 +36,6 @@ function SecurityRoleForm(props) {
     return {
       name: record.name,
       active: record.active,
-      permissions: record.permissions || [],
     };
   });
 
@@ -76,15 +70,6 @@ function SecurityRoleForm(props) {
           <SwitchFormItem
             name="active"
             label={i18n('entities.securityRole.fields.active')}
-          />
-        </div>
-        <div className="w-full sm:w-md md:w-md lg:w-md mt-4">
-          <SecurityPermissionAutocompleteFormItem  
-            name="permissions"
-            label={i18n('entities.securityRole.fields.permissions')}
-            required={false}
-            showCreate={!props.modal}
-            mode="multiple"
           />
         </div>
 

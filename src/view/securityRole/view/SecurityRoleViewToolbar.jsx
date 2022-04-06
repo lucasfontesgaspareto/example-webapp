@@ -66,6 +66,21 @@ function SecurityRoleViewToolbar(props) {
           </button>
         </Link>
       )}
+      
+      {hasPermissionToEdit && (
+        <Link to={`/security-role/${id}/permissions`}>
+          <button
+            className="mb-2 mr-2 text-sm disabled:opacity-50 disabled:cursor-default px-4 py-2 tracking-wide text-white transition-colors duration-200 transform bg-gray-700 rounded-md hover:bg-gray-600 focus:outline-none focus:bg-gray-600"
+            type="button"
+          >
+            <FontAwesomeIcon
+              className="mr-2"
+              icon={faEdit}
+            />
+            {i18n('entities.securityPermission.label')}
+          </button>
+        </Link>
+      )}
 
       {hasPermissionToDestroy && (
         <button

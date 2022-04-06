@@ -11,12 +11,11 @@ import { useDispatch } from 'react-redux';
 import { i18n } from '../../../i18n';
 import yupFormSchemas from '../../../modules/shared/yup/yupFormSchemas';
 import actions from '../../../modules/user/form/userFormActions';
-import userEnumerators from '../../../modules/user/userEnumerators';
-import SelectFormItem from '../../shared/form/items/SelectFormItem';
 import * as yup from 'yup';
+import SecurityRoleAutocompleteFormItem from '../../securityRole/autocomplete/SecurityRoleAutocompleteFormItem';
 
 const schema = yup.object().shape({
-  roles: yupFormSchemas.stringArray(
+  roles: yupFormSchemas.relationToMany(
     i18n('user.fields.roles'),
   ),
 });
@@ -59,13 +58,11 @@ function UserEditForm(props) {
         </div>
 
         <div className="w-full sm:w-md md:w-md lg:w-md mt-4">
-          <SelectFormItem
+          <SecurityRoleAutocompleteFormItem  
             name="roles"
             label={i18n('user.fields.roles')}
-            options={userEnumerators.roles.map((value) => ({
-              value,
-              label: i18n(`roles.${value}.label`),
-            }))}
+            required={false}
+            showCreate={!props.modal}
             mode="multiple"
           />
         </div>

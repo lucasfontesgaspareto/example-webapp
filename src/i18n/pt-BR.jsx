@@ -58,6 +58,9 @@ const ptBR = {
         edit: {
           title: 'Editar Perfil de acesso',
         },
+        permissions: {
+          title: 'Editar permissões do perfil: ',
+        },
         fields: {
           id: 'Id',
           'name': 'Nome',
@@ -126,19 +129,21 @@ const ptBR = {
         },
         enumerators: {
           'entity': {
-            'tenant': 'Tenant',
-            'plan': 'Plan',
-            'user': 'User',
-            'auditLog': 'AuditLog',
-            'settings': 'Settings',
+            'tenant': 'Área de Trabalho',
+            'plan': 'Plano',
+            'user': 'Usuário',
+            'auditLog': 'Auditoria',
+            'settings': 'Configurações',
+            'securityRole': 'Perfis de acesso',
+            'securityPermission': 'Permissões de acesso',
           },
           'action': {
-            'Create': 'Create',
-            'Read': 'Read',
-            'Edit': 'Edit',
-            'Destroy': 'Destroy',
-            'Import': 'Import',
-            'Autocomplete': 'Autocomplete',
+            'Create': 'Cria',
+            'Read': 'Ler',
+            'Edit': 'Edição',
+            'Destroy': 'Remoção',
+            'Import': 'Importação',
+            'Autocomplete': 'Autocompletar',
           },
         },
         placeholders: {

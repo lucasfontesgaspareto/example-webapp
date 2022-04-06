@@ -3,6 +3,8 @@ import { tenantSubdomain } from './tenantSubdomain';
 import AuthCurrentTenant from '../auth/authCurrentTenant';
 import config from '../../config';
 import SettingsService from '../settings/settingsService';
+import SecurityPermissionService from '../securityPermission/securityPermissionService';
+import AuthCurrentPermissions from '../auth/authCurrentPermissions';
 
 export default class TenantService {
   static async fetchAndApply() {
@@ -39,8 +41,17 @@ export default class TenantService {
     if (tenantId && !tenantUrl) {
       try {
         const currentTenant = await this.find(tenantId);
-
+        
         AuthCurrentTenant.set(currentTenant);
+      } catch (error) {
+        console.error(error);
+      }
+    }
+
+    if (tenantId) {
+      try {
+        const permissions = await SecurityPermissionService.data()
+        AuthCurrentPermissions.set(permissions)
       } catch (error) {
         console.error(error);
       }

@@ -43,9 +43,9 @@ function UserView(props) {
         label={i18n('user.fields.roles')}
         value={user.roles}
         render={(value) =>
-          value.map((roleId) => (
-            <div key={roleId}>
-              <span>{Roles.labelOf(roleId)}</span>
+          value.map((role) => (
+            <div key={role.id}>
+              <span>{role.name}</span>
             </div>
           ))
         }
