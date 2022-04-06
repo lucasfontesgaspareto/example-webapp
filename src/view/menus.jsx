@@ -20,13 +20,6 @@ export default [
     permissionRequired: null,
   },
 
-  config.isPlanEnabled && {
-    path: '/plan',
-    permissionRequired: permissions.planRead,
-    icon: faCreditCard,
-    label: i18n('plan.menu'),
-  },
-
   {
     path: '/user',
     label: i18n('user.menu'),
@@ -35,17 +28,32 @@ export default [
   },
 
   {
-    path: '/audit-logs',
-    icon: faHistory,
-    label: i18n('auditLog.menu'),
-    permissionRequired: permissions.auditLogRead,
-  },
-
-  {
-    path: '/settings',
+    group: true,
+    exact: true,
     icon: faCog,
     label: i18n('settings.menu'),
-    permissionRequired: permissions.settingsEdit,
-  },
+    children: [
+      config.isPlanEnabled && {
+        path: '/plan',
+        permissionRequired: permissions.planRead,
+        icon: faCreditCard,
+        label: i18n('plan.menu'),
+      },
+
+      {
+        path: '/audit-logs',
+        icon: faHistory,
+        label: i18n('auditLog.menu'),
+        permissionRequired: permissions.auditLogRead,
+      },
+
+      {
+        path: '/settings',
+        icon: faCog,
+        label: i18n('settings.menu'),
+        permissionRequired: permissions.settingsEdit,
+      },
+    ].filter(Boolean)
+  }
 
 ].filter(Boolean);
